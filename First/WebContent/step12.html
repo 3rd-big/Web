@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function radioEx(){
+            var me = document.menuForm.menu;
+            var flag = true;
+            for(i = 0; i<me.length; i++){
+                if(me[i].checked){
+                    alert(me[i].value + "를 주문하셨습니다.");
+                    flas = false;
+                    break;
+                }
+            }
+            if(flag){
+                alert("메뉴를 선택해주세요");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="menuForm">
+        <input type="radio" name="menu" value="꽃등심"> 꽃등심 <br>
+        <input type="radio" name="menu" value="우삼겹"> 우삼겹 <br>
+        <input type="radio" name="menu" value="차돌박이"> 차돌박이 <br>
+        <input type="button" value="주문" onclick="radioEx()">
+
+    </form>
+</body>
+</html>

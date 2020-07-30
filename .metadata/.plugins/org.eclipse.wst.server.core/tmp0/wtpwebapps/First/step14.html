@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function selectCheck(){
+            var line = document.subwayForm.line;
+            if(line.value != ""){
+                alert(line.value + "호선 입니다.");
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <form name="subwayForm">
+        <select name="line" onchange="selectCheck()">
+            <option value="">---</option>
+            <option value="1">1호선</option>
+            <option value="2">2호선</option>
+            <option value="3">3호선</option>
+            <option value="4">4호선</option>
+        </select>
+    </form>
+</body>
+</html>

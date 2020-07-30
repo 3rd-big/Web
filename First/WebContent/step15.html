@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(x, y) {
+            return x + y;
+        }
+        function sub(x, y) {
+            return x - y;
+        }
+        function mul(x, y) {
+            return x * y;
+        }
+        function div(x, y) {
+            return x / y;
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        var a = prompt("정수를 입력하시오", "0");
+        var b = prompt("정수를 입력하시오", "0");
+        var c = prompt("연산자를 입력하시오", "+");
+
+        var a_int = parseInt(a);
+        var b_int = parseInt(b);
+        var result = 0;
+
+        switch (c) {
+            case "+":
+                result = add(a_int, b_int);
+                break;
+            case "-":
+                result = sub(a_int, b_int);
+                break;
+            case "*":
+                result = mul(a_int, b_int);
+                break;
+            case "/":
+                result = div(a_int, b_int);
+                break;
+        }
+
+        alert(result);
+    </script>
+</body>
+
+</html>

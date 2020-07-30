@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createTable(){
+            var table = "<table border=1>";
+            table += "<tr><td>1</td><td>아이유</td></tr>";
+            table += "<tr><td>2</td><td>손연재</td></tr>";
+            table += "</table>";
+            document.getElementById("tableView").innerHTML = table;
+        }
+
+        function clearTable(){
+            document.getElementById("tableView").innerHTML = "";
+        }
+
+        function createTbody(){
+            document.getElementById("tb").innerHTML = "<tr><td>아이유</td><td>11</td></tr>";
+        }
+
+        function clearTbody(){
+            document.getElementById("tb").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    case1: <input type="button" value="create" onclick="createTable()">
+    <input type="button" value="clear" onclick="clearTable()">
+    <span id="tableView"></span>
+    <hr>
+    case2: <br><br><br>
+    <table border="1">
+        <thead>
+            <th>
+                <th>이름</th><th>나이</th>
+            </th>
+        </thead>
+        <tbody id="tb"></tbody>
+        <tfoot>
+            <tr>
+                <td><input type="button" value="create" onclick="createTbody()"></td>
+                <td><input type="button"  value="clear" onclick="clearTbody()"></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
