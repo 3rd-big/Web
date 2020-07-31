@@ -25,3 +25,15 @@
 192.168.0.9 - - [30/Jul/2020:10:36:53 +0900] "GET /javaScipt/register_ex.html HTTP/1.1" 404 837
 192.168.0.9 - - [30/Jul/2020:10:36:53 +0900] "GET /favicon.ico HTTP/1.1" 404 818
 0:0:0:0:0:0:0:1 - - [30/Jul/2020:10:45:26 +0900] "GET /First/step5.html HTTP/1.1" 200 1073
+127.0.0.1 - - [30/Jul/2020:10:49:15 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:10:49:15 +0900] "GET /First/step6.html HTTP/1.1" 200 703
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:07:40 +0900] "GET /First/step7.html HTTP/1.1" 200 1247
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:16:36 +0900] "GET /First/step8.html HTTP/1.1" 200 1184
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:18:31 +0900] "GET /First/step8.html HTTP/1.1" 200 1243
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:19:45 +0900] "GET /First/step8.html HTTP/1.1" 200 1271
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:20:12 +0900] "GET /First/step8.html HTTP/1.1" 200 1243
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:22:33 +0900] "GET /First/step8.html HTTP/1.1" 200 1289
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:11:23:54 +0900] "GET /First/step8.html HTTP/1.1" 200 1312
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:16:22:18 +0900] "GET /First/register_ex.html HTTP/1.1" 200 1290
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:16:22:18 +0900] "GET /First/js/script.js HTTP/1.1" 200 1867
+0:0:0:0:0:0:0:1 - - [30/Jul/2020:16:22:31 +0900] "GET /First/main.jsp?userId=test123&userPass=test123&pass_confirm=test123&gender=male&hobby=youtube&loc=seoul HTTP/1.1" 200 160

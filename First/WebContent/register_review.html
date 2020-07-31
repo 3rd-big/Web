@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="registerForm" onsubmit="return registerCheck()">
+        <h1>회원가입</h1>
+        아이디: <input type="text" name="userId"> (5자 이상 10자 이하)<br>
+        비밀번호: <input type="password" name="userPw"><br>
+        비밀번호 확인: <input type="password" name="userPwConfirm"><br>
+        성별: <input type="radio" name="gender" value="남" id="genderMale">
+        <label for="genderMale">남</label>
+        <input type="radio" name="gender" value="여" id="genderFeMale">
+        <label for="genderFeMale">여</label><br>
+        취미: <input type="checkbox" name="hobby" id="hobbyYoutube">
+        <label for="hobbyYoutube">유튜브</label>
+        <input type="checkbox" name="hobby" id="hobbyGame">
+        <label for="hobbyGame">게임</label>
+        <input type="checkbox" name="hobby" id="hobbyCoding">
+        <label for="hobbyCoding">코딩</label><br>
+        지역: <select name="location">
+            <option value="">---</option>
+            <option value="서울">서울</option>
+            <option value="경기">경기</option>
+            <option value="경상">경상</option>
+        </select><br>
+        <input type="submit" value="가입하기">
+    </form>
+
+    <script src="js/script_review.js"></script>
+</body>
+
+</html>

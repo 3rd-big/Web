@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(){
+            var ag = document.angelForm.angel;
+            var flag = true;
+            for(i=0;i<ag.length;i++){
+                if(ag[i].checked){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                alert("빈 공란이 존재합니다.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    당신이 좋아하는 언어는?<br>
+    <form action="RadioServlet" method="GET" name="angelForm" onsubmit="return check()">
+        <input type="radio" name="angel" value="python">파이썬<br>
+        <input type="radio" name="angel" value="java">자바<br>
+        <input type="radio" name="angel" value="C">C<br>
+        <input type="submit" value="선택">
+    </form>
+</body> 
+</html>

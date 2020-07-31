@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+    <script>
+        function checkSelect(){
+            var languageTxt = document.selectForm.language;
+            if(languageTxt.value == ""){
+                alert("빈 공란이 존재합니다.");
+                languageTxt.value = "";
+                languageTxt.focus();
+                return false;
+            }
+        }
+    </script>
+<body>
+    <form action="SelectServlet" method="GET" name="selectForm" onsubmit="return checkSelect()">
+        <select name="language">
+            <option value="">---</option>
+            <option value="python">파이썬</option>
+            <option value="java">자바</option>
+            <option value="C">C언어</option>
+        </select>
+        <input type="submit" value="선택">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script>
+        function menuCheck(){
+            var menuTxt = document.menuForm.menu;
+            var flag = true;
+            for(i=0; i<menuTxt.length; i++){
+                if(menuTxt[i].checked){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                alert("빈 공란이 존재합니다.");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action="CheckBoxServlet" method="GET" name="menuForm" onsubmit="return menuCheck()">
+        <input type="checkbox" name="menu" value="피자">피자<br>
+        <input type="checkbox" name="menu" value="꽃등심">꽃등심<br>
+        <input type="checkbox" name="menu" value="다금바리">다금바리<br>
+        <input type="submit" value="전송">
+    </form>
+</body>
+
+</html>

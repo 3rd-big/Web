@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script>
+        function profileCheck(){
+            var genderTxt = document.profileForm.gender;
+            var gisuTxt = document.profileForm.gisu;
+            var nameTxt = document.profileForm.personName;
+            
+            var flag = true;
+            for(i=0; i<genderTxt.length; i++){
+                if(genderTxt[i].checked){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                alert("성별을 체크하세요");
+                return false;
+            }
+
+            if(gisuTxt.value == ""){
+                alert("기수를 입력하세요");
+                return false;
+            }
+
+            var flag2 = true;
+            for(i=0; i<nameTxt.length; i++){
+                if(nameTxt[i].checked){
+                    flag2 = false;
+                    break;
+                }
+            }
+            if(flag2){
+                alert("이름을 체크하세요");
+                return false;
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <form action="MapServlet" method="GET" name="profileForm" onsubmit="return profileCheck()">
+        <input type="radio" name="gender" value="남">남<br>
+        <input type="radio" name="gender" value="여">여<br>
+         기수: <input type="text" name="gisu"><br>
+         <input type="checkbox" name="personName" value="백승석">백승석<br>
+         <input type="checkbox" name="personName" value="민전기">민전기<br>
+         <input type="checkbox" name="personName" value="이준우">이준우<br>
+        <input type="submit" value="전송">
+    </form>
+</body>
+
+</html>
