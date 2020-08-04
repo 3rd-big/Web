@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import vo.PersonVO;
 
-/**
- * Servlet implementation class EnterServlet
- */
 @WebServlet("/EnterServlet")
 public class EnterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +23,7 @@ public class EnterServlet extends HttpServlet {
 	public void init() throws ServletException {
 		ServletContext context = this.getServletContext();
 		// list는 주소값을 저장하고 있으므로 새로운 사람의 추가는 list.add()로 한다.
-		// 결국 list가 가리키는 주소값은 고정이지만 list의 객체에는 계쏙 추가된 인원이 증가한다.
+		// 결국 list가 가리키는 주소값은 고정이지만 list의 객체에는 계속 추가된 인원이 증가한다.
 		
 		context.setAttribute("table", list);
 		System.out.println("init()..... list add");

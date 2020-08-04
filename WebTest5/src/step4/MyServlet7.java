@@ -47,7 +47,6 @@ public class MyServlet7 extends HttpServlet {
 		out.print("sessionInfo: " + sessionInfo + "<br>");
 		out.print("applicationInfo: " + applicationInfo + "<br>");
 		out.print("</body></html>");
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

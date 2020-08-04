@@ -41,8 +41,6 @@ public class MyServlet3 extends HttpServlet {
 		}
 		
 		out.print("</body></html>");
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

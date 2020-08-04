@@ -1,4 +1,4 @@
-package step4;
+package Pokemon;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MyServlet6
+ * Servlet implementation class Gobbok
  */
-@WebServlet("/MyServlet9")
-public class MyServlet9 extends HttpServlet {
+@WebServlet("/Gobbok")
+public class Gobbok extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyServlet9() {
+    public Gobbok() {
         super();
         // TODO Auto-generated constructor stub
     }

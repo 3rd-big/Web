@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script>
+        function idCheck(){
+            var idTxt = document.MemberForm.membership;
+            if(idTxt.value ==  ""){
+                alert("아이디를 기재해주세요.");
+                idTxt.value = "";
+                idTxt.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="FindServlet" method="GET" name="MemberForm" onsubmit="return idCheck()">
+        id 검색: <input type="text" name="membership">
+        <input type="submit" value="검색">
+    </form>
+</body>
+</html>

@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import vo.ProductVO;
 
-/**
- * Servlet implementation class GetProductServlet
- */
 @WebServlet("/GetProductServlet")
 public class GetProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
