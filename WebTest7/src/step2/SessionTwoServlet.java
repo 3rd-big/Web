@@ -27,7 +27,7 @@ public class SessionTwoServlet extends HttpServlet {
 		
 		String user = (String) session.getAttribute("user");
 		out.print("session으로부터 정보를 getting.." + user);
-		out.print("<hr><a href=SessionThreeservlet>SessionThreeServlet</a>");
+		out.print("<hr><a href=SessionThreeServlet>SessionThreeServlet</a>");
 		out.close();
 	}
 
