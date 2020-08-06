@@ -22,6 +22,8 @@
 		<br>
 		<a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a>
 		<br>
+		<a href="<%=request.getContextPath()%>/DelController">탈퇴</a>
+		<br>
 	<%
 		} else {	
 	%>

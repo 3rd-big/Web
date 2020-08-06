@@ -8,17 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Member;
 import service.JoinService;
 import service.JoinServiceImpl;
 
-@WebServlet("/SearchController")
-public class SearchController extends HttpServlet {
+@WebServlet("/EditController")
+public class EditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public SearchController() {
+    public EditController() {
 
     }
 
@@ -30,20 +29,20 @@ public class SearchController extends HttpServlet {
 		// 서비스 객체 생성
 		JoinService service = new JoinServiceImpl();
 		
-		// 세션 생성
-		HttpSession session = request.getSession(false);
+		// 수정폼에 입력한 새 정보인 요청 파라미터를 읽는다.
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		
-		// 세션에 저장한 id 즉, 로그인한 id를 읽는다.
-		String id = (String) session.getAttribute("id");
+		// 요청 파라미터로 읽은 값으로 Member 객체 생성
+		Member m = new Member(id, pwd, name, email);
 		
-		// 로그인한 id로 멤버 정보 검색
-		Member m = service.getMember(id);
+		// 서비스의 수정 메서드 호출
+		service.editMember(m);
 		
-		// 검색 결과인 객체 m을 request객체에 이름 "m"으로 저장
-		request.setAttribute("m", m);
-		
-		// 정보 페이지로 이동
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/memberInfo.jsp");
+		// 메뉴 페이지로 이동
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/result.jsp");
 		if(dispatcher != null) {
 			dispatcher.forward(request, response);
 		}
