@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="NewWizardAction">
-	</section>
 	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.FileSystem"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="FileSystemImportWizard">
+		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
+		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\ProductBoard"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\Member"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest2"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest3"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest4"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest5"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest7"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest8"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest"/>
+			<item value="C:\Users\kitri\Desktop\jsp 소스\Web\WebTest9"/>
+		</list>
 	</section>
 </section>
