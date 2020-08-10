@@ -16,7 +16,6 @@ public class JoinServiceImpl implements JoinService{
 	public void join(Member m) {
 		dao.insert(m);
 	}
-	
 
 	@Override
 	public Member getMember(String id) {
@@ -25,14 +24,12 @@ public class JoinServiceImpl implements JoinService{
 
 	@Override
 	public void editMember(Member m) {
-		// TODO Auto-generated method stub
-		
+		dao.update(m);
 	}
 
 	@Override
 	public void delMember(String id) {
-		// TODO Auto-generated method stub
-		
+		dao.delete(id);
 	}
 
 }

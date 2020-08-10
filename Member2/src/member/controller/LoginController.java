@@ -31,6 +31,7 @@ public class LoginController extends HttpServlet {
 	
 		boolean flag = false;
 		
+		// 로그인 되었을 시 세션을 생성
 		HttpSession session = request.getSession();
 		
 		String id = request.getParameter("id");

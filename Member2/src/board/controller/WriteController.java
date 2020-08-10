@@ -1,4 +1,4 @@
-package member.controller;
+package board.controller;
 
 import java.io.IOException;
 
@@ -8,13 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutController")
-public class LogoutController extends HttpServlet {
+import board.service.Service;
+import board.service.ServiceImpl;
+import model.Board;
+
+@WebServlet("/WriteController")
+public class WriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LogoutController() {
+    public WriteController() {
 
     }
 
@@ -23,9 +26,20 @@ public class LogoutController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		HttpSession session = request.getSession(false);
+		Service service = new ServiceImpl();
 		
-		session.invalidate();
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		// 요청 파라미터를 읽은 값으로 Board 객체 생성
+		Board b = new Board();
+		b.setWriter(writer);
+		b.setTitle(title);
+		b.setContent(content);
+		
+		// 서비스의 글작성 기능 실행
+		service.writeBoard(b);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/result.jsp");
 		if(dispatcher != null) {

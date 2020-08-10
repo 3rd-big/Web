@@ -1,39 +1,42 @@
-package member.dao;
+package board.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import conn.DBConnect;
-import model.Member;
+import model.Board;
 
-public class JoinDaoImpl implements JoinDao{
-
+public class DaoImpl  implements Dao{
 	private DBConnect db;
 	
-	public JoinDaoImpl() {
+	public DaoImpl() {
 		db = DBConnect.getInstance();
 	}
 	
 	@Override
-	public void insert(Member m) {
+	public void insert(Board b) {
 		Connection conn = null;
 		
-		String sql = "insert into member2 values(?, ?, ?, ?)";
-	
+		String sql = "insert into board values(seq_board.nextval, ?, sysdate, ?, ?)";
+		
 		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, m.getId());
-			pstmt.setString(2, m.getPwd());
-			pstmt.setString(3, m.getName());
-			pstmt.setString(4, m.getEmail());
+
+			pstmt.setString(1, b.getWriter());
+			pstmt.setString(2, b.getTitle());
+			pstmt.setString(3, b.getContent());
 			
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -48,22 +51,60 @@ public class JoinDaoImpl implements JoinDao{
 	}
 
 	@Override
-	public Member select(String id) {
+	public Board select(int num) {
 		Connection conn = null;
 		ResultSet rs = null;
-		Member m = null;
-		String sql = "select * from member2 where id=?";
 		PreparedStatement pstmt = null;
+		
+		String sql = "select * from board where num=?";
+		
+		try {
+			conn = db.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				return new Board(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List selectAll() {
+		Connection conn = null;
+		ResultSet rs = null;
+		ArrayList<Board> list = new ArrayList<>();
+		
+		// 전체 검색하는 sql문
+		String sql = "select * from board order by num";
+		PreparedStatement pstmt = null;
+		
 		try {
 			// 커넥션 객체 획득
 			conn = db.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return new Member(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			
+			// 검색 결과가 있다면 컬럼 값 하나씩 읽어서 Board 객체를 생성하여 반환
+			while(rs.next()) {
+				list.add(new Board(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5)));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -77,14 +118,14 @@ public class JoinDaoImpl implements JoinDao{
 			}
 		}
 		
-		return null;
+		return list;
 	}
 
 	@Override
-	public void update(Member m) {
+	public void update(Board b) {
 		Connection conn = null;
 		
-		String sql = "update member2 set pwd=?, name=?, email=? where id=?";
+		String sql = "update board set w_date=sysdate, title=?, content=? where num=?";
 		
 		PreparedStatement pstmt = null;
 		
@@ -92,11 +133,10 @@ public class JoinDaoImpl implements JoinDao{
 			conn = db.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, m.getPwd());
-			pstmt.setString(2, m.getName());
-			pstmt.setString(3, m.getEmail());
-			pstmt.setString(4, m.getId());
+
+			pstmt.setString(1, b.getTitle());
+			pstmt.setString(2, b.getContent());
+			pstmt.setInt(3, b.getNum());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -113,10 +153,10 @@ public class JoinDaoImpl implements JoinDao{
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int num) {
 		Connection conn = null;
 		
-		String sql = "delete member2 where id=?";
+		String sql = "delete board where num=?";
 		
 		PreparedStatement pstmt = null;
 		try {
@@ -124,7 +164,7 @@ public class JoinDaoImpl implements JoinDao{
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
+			pstmt.setInt(1, num);
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
