@@ -6,6 +6,7 @@ create table member2(
     );
     
 drop table member2;
+drop table board;
     
 insert into member(id, password, name, address)
 values('java', '1234', '손연재', '수서');
@@ -35,16 +36,39 @@ start with 1
 increment by 1;
 
 
+create table p_product(
+    pno number primary key,
+    pname varchar2(20) not null,
+    pmaker varchar2(20) not null,
+    pprice varchar2(20) not null,
+    pdetail varchar2(2000) 
+);
 
+create sequence s_pno
+nocache
+start with 1
+increment by 1;
 
+-------------------------------------------------------------
 create table board(
+num number primary key, 
+writer varchar2(20) references member2(id) on delete cascade, 
+w_date date, 
+title varchar2(50) not null, 
+content varchar2(500)
+);
+
+create sequence seq_board; 
+
+------------------------------------------------------------- ImgBoard 
+
+create table shop_product(
     num number primary key,
-    writer varchar2(20) references member(id) on delete cascade,
-    w_date date,
-    title varchar2(50) not null,
+    name varchar2(500) not null,
+    quantity number not null,
+    price number not null,
+    img varchar2(500),
     content varchar2(500)
 );
 
-create sequence seq_board;
-
-
+create sequence seq_shop_product;
