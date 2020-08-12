@@ -72,3 +72,36 @@ create table shop_product(
 );
 
 create sequence seq_shop_product;
+
+------------------------------------------------------------- ImgRep2
+
+create table img(
+    num number primary key,
+    writer varchar2(20),
+    title varchar2(50),
+    path varchar2(500),
+    u_date date
+);
+
+create sequence seq_img;
+
+create table reps(
+    num number primary key,
+    writer varchar2(20),
+    content varchar2(20),
+    img_num number references img(num) on delete cascade
+);
+
+create sequence seq_reps;
+
+select * from img;
+
+------------------------------------------------------------- shop
+create table shop_member(
+    id varchar2(20) primary key,
+    pwd varchar2(20),
+    name varchar2(20),
+    email varchar2(20),
+    addr varchar2(20),
+    type number
+);
