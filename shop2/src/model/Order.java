@@ -3,16 +3,16 @@ package model;
 import java.sql.Date;
 
 public class Order {
-	private int num;
-	private int pro_num;
-	private int order_num;
-	private int total_price;
-	private String o_id;
-	private Date o_date;
-	private int o_state;
-	private int d_state;
-	private String prod_name;
-	private String prod_img;
+	private int num;			// 주문번호
+	private int pro_num;		// 제품번호
+	private int order_num;		// 주문갯수
+	private int total_price;	// 최종가격
+	private String o_id;		// 주문자 아이디
+	private Date o_date;		// 주문날짜
+	private int o_state;		// 주문상태
+	private int d_state;		
+	private String prod_name;	// 제품이름
+	private String prod_img;	// 제품이미지
 
 	public Order() {
 	}

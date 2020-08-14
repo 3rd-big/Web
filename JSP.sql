@@ -119,3 +119,20 @@ img		 varchar2(500),
 content   	varchar2(500),
 s_id varchar2(20) references shop_member(id) on delete  cascade
 );
+
+
+create table shop_order(
+num		 number primary key,
+pro_num		 number references shop_product(num) on delete cascade,
+order_num	 number,
+total_price	 number,
+o_id		 varchar2(20) references shop_member(id) on delete cascade,
+o_date		 date,
+o_state		 number,
+d_state		 number
+);
+
+create sequence seq_shop_order;
+
+
+

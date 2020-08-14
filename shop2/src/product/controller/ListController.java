@@ -32,9 +32,6 @@ public class ListController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String s_id = (String) session.getAttribute("id");
 		ArrayList<Product> products = service.getProductsById(s_id); 
-
-		System.out.println("ListController 페이지");
-		System.out.println(products.toString());
 		
 		request.setAttribute("products", products);
 		String path = "/view/seller/list.jsp";

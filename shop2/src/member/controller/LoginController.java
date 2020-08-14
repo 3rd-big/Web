@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
 		
 		Service service = new ServiceImpl();
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
@@ -46,9 +46,9 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("id", id);
 			session.setAttribute("memberType", type);
 			if(type == 1) {
-				path = "/seller/List";
+				path = "/seller/List";		
 			} else if(type == 2) {
-				path = "/order/list";
+				path = "/order/list";		
 			}
 		}
 		

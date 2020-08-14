@@ -52,9 +52,6 @@ public class AddController extends HttpServlet {
 			p.setPrice(Integer.parseInt(multi.getParameter("price")));
 			p.setContent(multi.getParameter("content"));
 			
-			System.out.println("AddControler 페이지");
-			System.out.println(p.toString());
-			
 			// 전송한 전체 파일이름들을 가져옴
 			Enumeration files = multi.getFileNames();
 			
