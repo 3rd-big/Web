@@ -105,3 +105,17 @@ create table shop_member(
     addr varchar2(20),
     type number
 );
+
+------------------------------------------------------------- shop2
+
+create sequence seq_shop_product;
+
+create table shop_product(
+num		 number primary key,
+name		 varchar2(500) not null,
+quantity	    number not null,
+price		 number not null, 
+img		 varchar2(500),
+content   	varchar2(500),
+s_id varchar2(20) references shop_member(id) on delete  cascade
+);
