@@ -134,5 +134,16 @@ d_state		 number
 
 create sequence seq_shop_order;
 
+------------------------------------------------------------- 
 
+create table member3(
+    id varchar2(10) primary key,
+    password varchar2(20),
+    name varchar2(10),
+    address varchar2(40)
+);
+
+insert into member3(id, password, name, address) values ('java', '1234', '손연재', '수서');
+insert into member3(id, password, name, address) values ('Oracle', '5678', '김연아', '군포');
+insert into member3(id, password, name, address) values ('JSP', '9123', '티파니', '청담');
 
