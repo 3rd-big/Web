@@ -14,4 +14,6 @@ public interface Dao {
 	Img select(int num);
 	
 	int delete(int num);
+	
+	int update(Img img);
 }

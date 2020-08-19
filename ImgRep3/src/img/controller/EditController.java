@@ -1,9 +1,7 @@
 package img.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,13 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import img.service.Service;
 import img.service.ServiceImpl;
 import model.Img;
-import model.Rep;
 
-@WebServlet("/ImgList")
-public class ImgList extends HttpServlet {
+@WebServlet("/EditController")
+public class EditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ImgList() {
+    public EditController() {
 
     }
 
@@ -29,19 +26,13 @@ public class ImgList extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
-		rep.service.Service rep_service = new rep.service.ServiceImpl();
-		ArrayList<Img> imgs = service.getAll();
-		
-		for(Img i:imgs) {
-			ArrayList<Rep> reps = rep_service.getRepsByImg_num(i.getNum());
-			i.setReps(reps);
-		}
-		
-		request.setAttribute("imgs", imgs);
-		String path = "/imgBoard/imgList.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		dispatcher.forward(request, response);
-		
+		int num = Integer.parseInt(request.getParameter("num"));
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String pwd = request.getParameter("pwd");
+		Img i = new Img(num, writer, pwd, title, null, null);
+		service.editImg(i);
+		response.sendRedirect("GetController?num=" + num);
 		
 	}
 

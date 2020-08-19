@@ -39,4 +39,9 @@ public class ServiceImpl implements Service{
 		return dao.delete(num);
 	}
 
+	@Override
+	public int editImg(Img i) {
+		return dao.update(i);
+	}
+
 }

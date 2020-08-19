@@ -10,16 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import img.service.Service;
-import img.service.ServiceImpl;
-import model.Img;
 import model.Rep;
+import rep.service.Service;
+import rep.service.ServiceImpl;
 
-@WebServlet("/ImgList")
-public class ImgList extends HttpServlet {
+@WebServlet("/RepController")
+public class RepController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ImgList() {
+    public RepController() {
 
     }
 
@@ -27,22 +26,17 @@ public class ImgList extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
+
 		Service service = new ServiceImpl();
-		rep.service.Service rep_service = new rep.service.ServiceImpl();
-		ArrayList<Img> imgs = service.getAll();
-		
-		for(Img i:imgs) {
-			ArrayList<Rep> reps = rep_service.getRepsByImg_num(i.getNum());
-			i.setReps(reps);
-		}
-		
-		request.setAttribute("imgs", imgs);
-		String path = "/imgBoard/imgList.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		Rep rep = new Rep();
+		rep.setWriter(request.getParameter("writer"));
+		rep.setImg_num(Integer.parseInt(request.getParameter("img_num")));
+		rep.setContent(request.getParameter("content"));
+		service.addRep(rep);
+		ArrayList<Rep> reps = service.getRepsByImg_num(rep.getImg_num());
+		request.setAttribute("reps", reps);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/imgBoard/repList.jsp");
 		dispatcher.forward(request, response);
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -66,10 +66,14 @@ public class WriteController extends HttpServlet {
 		
 		p.setPath("/img/" + img);
 		service.addImg(p);
-		Img i = service.getImg(num);
-		request.setAttribute("i", i);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/imgBoard/addImg.jsp");
-		dispatcher.forward(request, response);
+		
+		// 추가
+		response.sendRedirect("GetController?num="+num);
+		
+//		Img i = service.getImg(num);
+//		request.setAttribute("i", i);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/imgBoard/addImg.jsp");
+//		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

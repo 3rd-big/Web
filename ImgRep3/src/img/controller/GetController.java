@@ -1,7 +1,6 @@
 package img.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import img.service.Service;
 import img.service.ServiceImpl;
 import model.Img;
-import model.Rep;
 
-@WebServlet("/ImgList")
-public class ImgList extends HttpServlet {
+@WebServlet("/GetController")
+public class GetController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ImgList() {
+    public GetController() {
 
     }
 
@@ -29,20 +27,13 @@ public class ImgList extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
-		rep.service.Service rep_service = new rep.service.ServiceImpl();
-		ArrayList<Img> imgs = service.getAll();
 		
-		for(Img i:imgs) {
-			ArrayList<Rep> reps = rep_service.getRepsByImg_num(i.getNum());
-			i.setReps(reps);
-		}
+		int num = Integer.parseInt(request.getParameter("num"));
+		Img i = service.getImg(num);
 		
-		request.setAttribute("imgs", imgs);
-		String path = "/imgBoard/imgList.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		request.setAttribute("i", i);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/imgBoard/addImg.jsp");
 		dispatcher.forward(request, response);
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

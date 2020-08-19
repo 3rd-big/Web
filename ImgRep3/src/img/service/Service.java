@@ -14,4 +14,6 @@ public interface Service {
 	Img getImg(int num);
 	
 	int delImg(int num);
+	
+	int editImg(Img i);
 }
