@@ -92,6 +92,8 @@ create table reps(
     img_num number references img(num) on delete cascade
 );
 
+drop table img;
+
 create sequence seq_reps;
 
 select * from img;
@@ -147,3 +149,30 @@ insert into member3(id, password, name, address) values ('java', '1234', '손연
 insert into member3(id, password, name, address) values ('Oracle', '5678', '김연아', '군포');
 insert into member3(id, password, name, address) values ('JSP', '9123', '티파니', '청담');
 
+commit;
+
+------------------------------------------------------------- imgRep3
+
+create table img(
+    num number primary key,
+    pwd varchar2(20),
+    writer varchar2(20),
+    title varchar2(50),
+    path varchar2(500),
+    u_date date
+);
+
+drop table img;
+
+create sequence seq_img;
+
+create table reps(
+    num number primary key,
+    writer varchar2(20),
+    content varchar2(500),
+    img_num number references img(num) on delete cascade
+);
+
+drop table reps;
+
+create sequence seq_reps;

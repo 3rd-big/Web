@@ -1,6 +1,7 @@
-package controller;
+package img.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,37 +10,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberVO;
-import service.Service;
-import service.ServiceImpl;
+import model.Rep;
+import rep.service.Service;
+import rep.service.ServiceImpl;
 
-@WebServlet("/IdCheckController")
-public class IdCheckController extends HttpServlet {
+@WebServlet("/RepController")
+public class RepController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public IdCheckController() {
+    public RepController() {
 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
-	
+		request.setCharacterEncoding("UTF-8");
+
 		Service service = new ServiceImpl();
-		MemberVO vo = null;
-		
-		String id = request.getParameter("id");
-		System.out.println(id);
-		vo = service.findMember(id);
-		System.out.println(vo);
-		boolean flag = false;
-		if(vo == null) {
-			flag = true;
-		}
-	
-		request.setAttribute("flag", flag);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("5.check.jsp");
+		Rep rep = new Rep();
+		rep.setWriter(request.getParameter("writer"));
+		rep.setImg_num(Integer.parseInt(request.getParameter("img_num")));
+		rep.setContent(request.getParameter("content"));
+		service.addRep(rep);
+		ArrayList<Rep> reps = service.getRepsByImg_num(rep.getImg_num());
+		request.setAttribute("reps", reps);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/imgBoard/repList.jsp");
 		dispatcher.forward(request, response);
 	}
 
